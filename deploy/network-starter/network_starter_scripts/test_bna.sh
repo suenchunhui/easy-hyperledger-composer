@@ -1,0 +1,1 @@
+mocha -t 0 ../test/*.js

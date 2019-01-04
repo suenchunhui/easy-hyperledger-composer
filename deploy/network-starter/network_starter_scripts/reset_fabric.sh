@@ -1,0 +1,1 @@
+composer network reset -c ${FABRIC_CARD}

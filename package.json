@@ -1,0 +1,25 @@
+{
+  "name": "sample-marbles-trade",
+  "version": "0.1.0",
+  "scripts": {
+    "build_image": "bash scripts/build_images.sh",
+    "setup_crypto": "bash scripts/setup_crypto.sh",
+    "start_fabric": "bash scripts/start_network.sh",
+    "build_bna": "bash scripts/build_bna.sh",
+    "install_bna": "bash scripts/install_bna.sh",
+    "upgrade_bna": "bash scripts/upgrade_bna.sh",
+    "start_playground": "./scripts/playground.sh up",
+    "stop_playground": "./scripts/playground.sh down",
+    "start_rest-server": "./scripts/fabric-rest-server.sh up",
+    "stop_rest-server": "./scripts/fabric-rest-server.sh down",
+    "stop_fabric": "bash scripts/stop_fabric.sh",
+    "reset_fabric": "bash scripts/reset_fabric.sh",
+    "clean_network": "bash scripts/clean_network.sh",
+    "add_participant": "bash scripts/add_participant.sh",
+    "test_bna": "bash scripts/test_bna.sh"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

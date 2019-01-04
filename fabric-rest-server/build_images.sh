@@ -1,0 +1,1 @@
+docker build -t composer_rest_server .

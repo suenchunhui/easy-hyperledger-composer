@@ -1,0 +1,1 @@
+composer-rest-server -c ${COMPOSER_CARD} -p ${REST_PORT}

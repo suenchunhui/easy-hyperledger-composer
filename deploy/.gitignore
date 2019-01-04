@@ -1,0 +1,6 @@
+crypto-config/*
+channel-artifacts/*
+composer-logs
+.composer
+.config
+.cache

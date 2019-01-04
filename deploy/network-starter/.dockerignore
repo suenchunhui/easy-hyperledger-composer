@@ -1,0 +1,5 @@
+./scripts
+./node_modules
+
+# Include the install docker scripts
+!./scripts/utils/install_docker.sh
