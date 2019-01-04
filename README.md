@@ -10,6 +10,9 @@ This setup requires [docker](https://docs.docker.com/install/linux/docker-ce/ubu
 ## Limitations
 Currently, this setup has a fixed 4-peer and 1-solo orderer configuration with fixed [configtx](deploy/configtx.yaml) and [crypto-config](deploy/crypto-config.yaml).
 
+# Overview
+This setup defines `npm` targets which will call a script in [scripts](scripts) to pull/build the necessary docker images and volumes, so that the entire system run in a completely containerized system.
+
 ## Quick start
 A sample test flow script is located in `scripts/testing/test_flow.sh`, which performs the following steps to start the system:
 ```
