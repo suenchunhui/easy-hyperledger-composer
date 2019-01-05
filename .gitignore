@@ -1,2 +1,5 @@
 node_modules
 *.bna
+.vagrant/*
+npm-debug.log
+ubuntu-xenial-16.04-cloudimg-console.log

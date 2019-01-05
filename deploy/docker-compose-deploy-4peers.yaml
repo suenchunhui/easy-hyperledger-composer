@@ -35,7 +35,7 @@ services:
     # ports:
     #   - "5984:5984"
     volumes:
-      - peer0_couchdb:/opt/couchdb/data
+      - deploy_peer0_couchdb:/opt/couchdb/data
     networks:
       - cc0_net
     
@@ -75,7 +75,7 @@ services:
     # ports:
     #   - "6984:5984"
     volumes:
-      - peer1_couchdb:/opt/couchdb/data
+      - deploy_peer1_couchdb:/opt/couchdb/data
     networks:
       - cc1_net
     
@@ -115,7 +115,7 @@ services:
     # ports:
     #   - "7984:5984"
     volumes:
-      - peer2_couchdb:/opt/couchdb/data
+      - deploy_peer2_couchdb:/opt/couchdb/data
     networks:
       - cc2_net
     
@@ -155,7 +155,7 @@ services:
     # ports:
     #   - "8984:5984"
     volumes:
-      - peer3_couchdb:/opt/couchdb/data
+      - deploy_peer3_couchdb:/opt/couchdb/data
     networks:
       - cc3_net
     
@@ -203,6 +203,8 @@ volumes:
     external: true
   CA:
     external: true
+  deploy_orderer_production_volume:
+    external: true
   deploy_orderer_volume:
     external: true
   deploy_peer0_crypto_msp_volume:
@@ -221,7 +223,11 @@ volumes:
     external: true
   deploy_peer3_crypto_tls_volume:
     external: true
-  peer0_couchdb:
-  peer1_couchdb:
-  peer2_couchdb:
-  peer3_couchdb:
+  deploy_peer0_couchdb:
+    external: true
+  deploy_peer1_couchdb:
+    external: true
+  deploy_peer2_couchdb:
+    external: true
+  deploy_peer3_couchdb:
+    external: true
