@@ -23,16 +23,15 @@ Due to some limitations of docker for windows, [Vagrant](https://www.vagrantup.c
 - checkout this repo using `git clone https://github.com/suenchunhui/easy-hyperledger-composer`
 - change directory to the folder containing the downloaded `Vagrantfile`
 - run `vagrant up` from the commandline(run `cmd.exe` from windows start menu) to provision the entire system. Download and provisioning system can take a long up (up to 10-20mins)
-- Once you reach the success screen output, 
+- Once you reach the success screen output similar to, 
 ```
-==> default:
-==> default: tern_from_ts@0.0.1 node_modules/tern_from_ts
-==> default: --------------------------------------------------------------------
-==> default: Success!
-==> default: run 'node server.js -p 8080 -a :' to launch Cloud9
-==> default: ++ echo 'cd /cloud9 ; su ubuntu -c "nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret" &'
-==> default: ++ cd /cloud9
-==> default: ++ su ubuntu -c 'nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret'
+default:  ---> aa1ad608312b
+default: Step 4/4 : ENTRYPOINT [ "bash", "/entrypoint.sh" ]
+default:  ---> Running in 3c13ef702649
+default: Removing intermediate container 3c13ef702649
+default:  ---> 308445705a78
+default: Successfully built 308445705a78
+default: Successfully tagged composer_rest_server:latest
 ```
 - and the terminal command exits, you can open the browser based IDE at [localhost:8181](http://localhost:8181)
 - login into the IDE using the default credentials `root` and `secret`
