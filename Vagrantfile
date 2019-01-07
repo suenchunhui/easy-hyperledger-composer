@@ -21,6 +21,9 @@ VAGRANTFILE_API_VERSION = "2"
 $script = <<SCRIPT
 set -x
 
+#make sure apt retries if download fails
+echo "APT::Acquire::Retries \"3\";" > /etc/apt/apt.conf.d/80-retries
+
 #install docker
 apt-get update
 apt-get install apt-transport-https ca-certificates curl software-properties-common build-essential
