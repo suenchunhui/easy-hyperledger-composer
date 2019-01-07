@@ -4,16 +4,44 @@ This is a docker-based devops setup for very easy deployment of hyperledger fabr
 Rather than a secure system, this meant for quick and robust deployment for educational and development purpose.
 *Note:* Do not use for production
 
-## Pre-requisites
-This setup requires [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository), docker-compose and [npm](https://www.npmjs.com/get-npm) as main dependancies, and generally \*nix type systems for commandline and bash commands.
+# Quick start
+There are 2 ways to start this hyperledger setup.
 
-## Limitations
-Currently, this setup has a fixed 4-peer and 1-solo orderer configuration with fixed [configtx](deploy/configtx.yaml) and [crypto-config](deploy/crypto-config.yaml).
+## Mac and Linux
+It can be run natively under OSX or Linux by installing docker and `npm`:
+This setup requires [docker in linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository) or [docker in mac os x](https://docs.docker.com/docker-for-mac/install/), [docker-compose](https://docs.docker.com/compose/install/) and [npm](https://www.npmjs.com/get-npm) as main dependancies, and generally \*nix type systems for commandline and bash commands.
+
+### Provisioning
+- checkout this repo using `git clone https://github.com/suenchunhui/easy-hyperledger-composer`
+- change directory to the cloned folder
+- follow the steps from [Basic commands](#basic-commands)
+
+## Windows
+Due to some limitations of docker for windows, [Vagrant](https://www.vagrantup.com/docs/installation/) is needed for windows host, and will be more computationally intensive. (See the vagrant section below for more configuration details)
+
+### Provisioning
+- checkout this repo using `git clone https://github.com/suenchunhui/easy-hyperledger-composer`
+- change directory to the folder containing the downloaded `Vagrantfile`
+- run `vagrant up` from the commandline(run `cmd.exe` from windows start menu) to provision the entire system. Download and provisioning system can take a long up (up to 10-20mins)
+- Once you reach the success screen output, 
+```
+==> default:
+==> default: tern_from_ts@0.0.1 node_modules/tern_from_ts
+==> default: --------------------------------------------------------------------
+==> default: Success!
+==> default: run 'node server.js -p 8080 -a :' to launch Cloud9
+==> default: ++ echo 'cd /cloud9 ; su ubuntu -c "nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret" &'
+==> default: ++ cd /cloud9
+==> default: ++ su ubuntu -c 'nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret'
+```
+- and the terminal command exits, you can open the browser based IDE at [localhost:8181](http://localhost:8181)
+- login into the IDE using the default credentials `root` and `secret`
+- continue with the steps from [Basic commands](#basic-commands). You can skip the step `npm run build_image` which has already been called by the vagrant provisioning
 
 # Overview
 This setup defines `npm` targets which will call a script in [scripts](scripts) to pull/build the necessary docker images and volumes, so that the entire system run in a completely containerized system.
 
-## Quick start
+## Basic commands
 A sample test flow script is located in `scripts/testing/test_flow.sh`, which performs the following steps to start the system:
 ```
 npm run build_image            #build images (only needs to be run once ever)
@@ -75,34 +103,19 @@ Refer to this chart to see how each of the action are dependant on previous acti
 ![Command flow](states.png)
 
 # Vagrant-Related
-### Preparation
+## Preparation
 - Download and install vagrant (include virtualbox installation) on the host system from [vagrantup.com](https://www.vagrantup.com/downloads.html)
 - If you are using windows 7, please use [vagrant 1.9.6 only](https://releases.hashicorp.com/vagrant/1.9.6/) and [Virtual Box 5.1.x](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
-- Download the `Vagrantfile` from this repo at this [link](https://raw.githubusercontent.com/suenchunhui/fabric-tutorial-vagrant/master/Vagrantfile) to an empty folder
 
-### Settings
+## CPU and Memory settings
 - Adjust the VM memory and number of cores, in the `Vagrantfile` using a text editor at the lines:
 ```
 v.memory = 4096
 v.cpus = 4
 ```
 
-### Provisioning
-- change directory to the folder containing the downloaded `Vagrantfile`
-- run `vagrant up` from the commandline(OSX: terminal, Win: cmd.exe) to provision the entire system. Download and provisioning system can take a long up (up to 10-20mins)
-- Once you reach the success screen output, 
-```
-==> default:
-==> default: tern_from_ts@0.0.1 node_modules/tern_from_ts
-==> default: --------------------------------------------------------------------
-==> default: Success!
-==> default: run 'node server.js -p 8080 -a :' to launch Cloud9
-==> default: ++ echo 'cd /cloud9 ; su ubuntu -c "nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret" &'
-==> default: ++ cd /cloud9
-==> default: ++ su ubuntu -c 'nodejs server.js -l 0.0.0.0 -w /home/ubuntu --auth root:secret'
-```
-- and the terminal command exits, you can open the browser based IDE at [localhost:8181](http://localhost:8181)
-- login into the IDE using the default credentials `root` and `secret`
+# Limitations
+Currently, this setup has a fixed 4-peer and 1-solo orderer configuration with fixed [configtx](deploy/configtx.yaml) and [crypto-config](deploy/crypto-config.yaml).
 
 # Useful Links
 1. [Hyperledger Composer Link](https://hyperledger.github.io/composer/v0.19/introduction/introduction)
