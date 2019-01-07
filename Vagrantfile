@@ -35,6 +35,8 @@ apt-get install -y docker-ce
 addgroup vagrant docker
 echo '#!/bin/bash' > /etc/rc.local
 echo 'service docker start' >> /etc/rc.local
+echo 'sleep 10'
+echo "docker ps -a | grep "fabric-couchdb" | awk '{print \$1}' | xargs docker restart " >> /etc/rc.local
 service docker start
 
 #install docker-compose
