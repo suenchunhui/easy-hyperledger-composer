@@ -17,7 +17,8 @@ if [ "$MODE" == up ]; then
         --name fabric_rest_$REST_PORT \
         -p $REST_PORT:$REST_PORT \
         composer_rest_server
-    docker network connect deploy_ca_net composer-playground
+
+    # docker network connect deploy_ca_net composer-playground
 
 elif [ "$MODE" == down ]; then
     echo "Stopping REST SERVER for ${COMPOSER_CARD} at Port ${REST_PORT}"

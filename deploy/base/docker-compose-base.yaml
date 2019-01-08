@@ -25,7 +25,8 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-    - deploy_orderer_volume:/var/hyperledger/production/
+    - deploy_orderer_volume:/var/hyperledger/orderer/
+    - deploy_orderer_production_volume:/var/hyperledger/production
     ports:
       - 7050:7050
       - 7054:7054
@@ -106,6 +107,8 @@ services:
       - 10053:7053
 
 volumes:
+  deploy_orderer_production_volume:
+    external: true
   deploy_orderer_volume:
     external: true
   deploy_peer0_crypto_msp_volume:
