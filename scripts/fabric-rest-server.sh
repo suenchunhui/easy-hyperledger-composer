@@ -22,7 +22,7 @@ if [ "$MODE" == up ]; then
 
 elif [ "$MODE" == down ]; then
     echo "Stopping REST SERVER for ${COMPOSER_CARD} at Port ${REST_PORT}"
-    docker rm -f fabric_rest_$REST_PORT
+    docker rm -f fabric_rest_$REST_PORT || /bin/true
 
 else
     echo "Invalid Mode. Only up or down accepted"

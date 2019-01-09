@@ -82,7 +82,7 @@ function clearContainers () {
   if [ -z "$CONTAINER_IDS" -o "$CONTAINER_IDS" == " " ]; then
     echo "---- No containers available for deletion ----"
   else
-    docker rm $CONTAINER_IDS
+    docker rm $CONTAINER_IDS || /bin/true
   fi
 }
 
@@ -112,14 +112,6 @@ function networkUp () {
 # Tear down running network
 function networkDown () {
   docker-compose -f $COMPOSE_FILE down
-  #Remove Composer BNA network instance
-  #docker-compose -f $COMPOSE_FILE -f $COMPOSE_FILE_COUCH down
-  # Don't remove containers, images, etc if restarting
-  # if [ "$MODE" != "restart" ]; then
-  #   #Cleanup the chaincode containers
-  #   # clearContainers 
-  #   # ./volume-utils.sh "DELETE"
-  # fi
 }
 
 

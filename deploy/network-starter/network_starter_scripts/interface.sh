@@ -53,8 +53,8 @@ then
     echo "Stopping Fabric"
 
     $SCRIPT_LOCATION/network_starter_scripts/stop_fabric.sh
-    docker ps -a | grep composer_rest_server | xargs docker rm -f
-    docker ps -a | grep composer-playground | xargs docker rm -f
+    docker ps -a | grep composer_rest_server | xargs docker rm -f || /bin/true
+    docker ps -a | grep composer-playground | xargs docker rm -f || /bin/true
 elif [ $COMMAND = "clean" ]
 then
     echo "clean up crypto volume"
