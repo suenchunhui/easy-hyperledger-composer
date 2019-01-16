@@ -30,9 +30,9 @@ npm run add_participant maeid1 mae@biznet.org marbles-network
 # # # SYNTAX: Card Name is <UNIQUE_IDENTIFIER>@<Business Network Name>
 npm run start_rest-server maeid1@marbles-network 3001
 
-# npm run stop_rest-server admin@marbles-network 3000
+npm run stop_rest-server admin@marbles-network 3000
 
-# npm run stop_rest-server maeid1@marbles-network 3001
+npm run stop_rest-server maeid1@marbles-network 3001
 
 # Reset all Fabric Transactions
 npm run reset_fabric admin@marbles-network
