@@ -26,7 +26,7 @@ echo "APT::Acquire::Retries \"3\";" > /etc/apt/apt.conf.d/80-retries
 
 #install docker
 apt-get update
-apt-get install apt-transport-https ca-certificates curl software-properties-common build-essential
+apt-get install apt-transport-https ca-certificates curl software-properties-common build-essential git
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 apt-key fingerprint 0EBFCD88
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu `lsb_release -cs` stable"
@@ -54,19 +54,18 @@ cd /usr/local/bin/ ; ln -s node nodejs
 #install yeoman tools, angular http-server, composer-generator
 npm install --unsafe-perm -g yo generator-fountain-webapp http-server@0.10.0 typings bower @angular/cli generator-hyperledger-composer
 
+#clone repo and call build_image
+cd  /home/vagrant
+su vagrant -c "git clone https://github.com/suenchunhui/easy-hyperledger-composer workspace"
+su vagrant -c "cd /home/vagrant/workspace ; npm run build_image"
+
 #install cloud9 IDE
 cd /home/vagrant
-mkdir /home/vagrant/workspace
 su vagrant -c "git clone https://github.com/c9/core.git cloud9 ; cd cloud9 ; NO_PULL=1 scripts/install-sdk.sh ; chmod a+rw -R build"
 echo 'cd /home/vagrant/cloud9 ; su vagrant -c "screen -d -m nodejs server.js -l 0.0.0.0 -w /home/vagrant/workspace --auth root:secret"' >> /etc/rc.local
 su vagrant -c "cd cloud9 ; screen -d -m nodejs server.js -l 0.0.0.0 -w /home/vagrant/workspace --auth root:secret"
 
 echo "exit 0" >> /etc/rc.local
-
-#call build_image
-cp -rf /vagrant/* /home/vagrant/workspace
-sudo chown vagrant -R /home/vagrant/workspace
-su vagrant -c "cd /home/vagrant/workspace ; npm run build_image"
 
 SCRIPT
 
@@ -79,7 +78,7 @@ Vagrant.configure('2') do |config|
     v.cpus = 2
   end
 
-  config.vm.provision "shell", inline: $script
+  config.vm.provision "shell", binary: true, inline: $script
   config.vm.network :forwarded_port, guest: 8080, host: 8080  #composer
   config.vm.network :forwarded_port, guest: 8181, host: 8181  #cloud9-ide
   config.vm.network :forwarded_port, guest: 9090, host: 9090  #custom-ui
