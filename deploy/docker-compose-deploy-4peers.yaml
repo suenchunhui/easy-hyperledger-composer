@@ -34,8 +34,6 @@ services:
     # for example map it to utilize Fauxton User Interface in dev environments.
     # ports:
     #   - "5984:5984"
-    volumes:
-      - deploy_peer0_couchdb:/opt/couchdb/data
     networks:
       - cc0_net
     
@@ -74,8 +72,6 @@ services:
     # for example map it to utilize Fauxton User Interface in dev environments.
     # ports:
     #   - "6984:5984"
-    volumes:
-      - deploy_peer1_couchdb:/opt/couchdb/data
     networks:
       - cc1_net
     
@@ -114,8 +110,6 @@ services:
     # for example map it to utilize Fauxton User Interface in dev environments.
     # ports:
     #   - "7984:5984"
-    volumes:
-      - deploy_peer2_couchdb:/opt/couchdb/data
     networks:
       - cc2_net
     
@@ -154,8 +148,6 @@ services:
     # for example map it to utilize Fauxton User Interface in dev environments.
     # ports:
     #   - "8984:5984"
-    volumes:
-      - deploy_peer3_couchdb:/opt/couchdb/data
     networks:
       - cc3_net
     
@@ -203,8 +195,6 @@ volumes:
     external: true
   CA:
     external: true
-  deploy_orderer_production_volume:
-    external: true
   deploy_orderer_volume:
     external: true
   deploy_peer0_crypto_msp_volume:
@@ -222,12 +212,4 @@ volumes:
   deploy_peer2_crypto_tls_volume:
     external: true
   deploy_peer3_crypto_tls_volume:
-    external: true
-  deploy_peer0_couchdb:
-    external: true
-  deploy_peer1_couchdb:
-    external: true
-  deploy_peer2_couchdb:
-    external: true
-  deploy_peer3_couchdb:
     external: true
