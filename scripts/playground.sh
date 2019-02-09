@@ -20,7 +20,7 @@ if [ "$MODE" == up ]; then
 
 elif [ "$MODE" == down ]; then
     echo "Stopping Composer Playground on port 8080"
-    docker rm -f composer-playground || /bin/true
+    docker rm -f composer-playground || /bin/true || /usr/bin/true
 
 else
     echo "Invalid Mode. Only up or down accepted"

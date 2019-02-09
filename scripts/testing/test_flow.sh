@@ -8,6 +8,10 @@ npm run setup_crypto
 
 npm run start_fabric
 
+npm run stop_fabric
+
+npm run start_fabric
+
 npm run build_bna marbles.bna
 
 npm run install_bna marbles-network marbles.bna
