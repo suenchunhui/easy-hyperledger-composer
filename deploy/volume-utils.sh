@@ -83,13 +83,6 @@ function createVolume() {
     # Delete Container
     docker rm $dockerContainerId
     echo "Delete Temp Container Complete..."
-
-    # Create Docker Container for Persistence if not exists
-    docker volume create deploy_peer0_couchdb
-    docker volume create deploy_peer1_couchdb
-    docker volume create deploy_peer2_couchdb
-    docker volume create deploy_peer3_couchdb
-    docker volume create deploy_orderer_production_volume
 }
 
 function deleteVolume() {

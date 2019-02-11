@@ -1,4 +1,4 @@
 #!/bin/bash
 cd ..
 
-composer archive create --sourceType dir --sourceName composer-bna/hyperledger/composer/output/ -a ${BNA_FILE_NAME}
+composer archive create --sourceType dir --sourceName /sample-src/composer-bna/ -a /hyperledger/composer/output/${BNA_FILE_NAME}
