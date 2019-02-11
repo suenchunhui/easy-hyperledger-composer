@@ -3,12 +3,12 @@
     "composer": "^0.20.0"
   },
   "name": "marbles-network",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "Marble Trading Network",
   "networkImage": "https://hyperledger.github.io/composer-sample-networks/packages/marbles-network/networkimage.svg",
   "networkImageanimated": "https://hyperledger.github.io/composer-sample-networks/packages/marbles-network/networkimageanimated.svg",
   "scripts": {
-    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName ./dist/ -a marbles-network.bna",
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/marbles-network.bna",
     "pretest": "npm run lint",
     "lint": "eslint .",
     "postlint": "npm run licchk",

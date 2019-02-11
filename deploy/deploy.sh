@@ -360,8 +360,7 @@ if [ "${MODE}" == "up" ]; then
   generateCerts
   #replacePrivateKey
   generateChannelArtifacts
-  elif [ "${MODE}" == "clean" ]; then ## Clear all Storage
-  clearVolumes
+  elif [ "${MODE}" == "clean" ]; then ## Clear all Containers and Images
   clearContainers
   clearImages
   elif [ "${MODE}" == "restart" ]; then ## Restart the network

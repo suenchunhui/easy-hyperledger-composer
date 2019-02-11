@@ -26,7 +26,6 @@ services:
     command: orderer
     volumes:
     - deploy_orderer_volume:/var/hyperledger/orderer/
-    - deploy_orderer_production_volume:/var/hyperledger/production
     ports:
       - 7050:7050
       - 7054:7054
