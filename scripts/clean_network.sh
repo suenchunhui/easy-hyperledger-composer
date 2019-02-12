@@ -10,12 +10,7 @@ bash "$DIR/clean_crypto.sh"
 
 docker volume rm \
     composer_bna \
-    composer_cred \
-    deploy_peer0_couchdb \
-    deploy_peer1_couchdb \
-    deploy_peer2_couchdb \
-    deploy_peer3_couchdb \
-    deploy_orderer_production_volume || /bin/true || /usr/bin/true
+    composer_cred || /bin/true || /usr/bin/true
 
 # Clear all docker networks
 docker network rm \
