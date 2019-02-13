@@ -1,5 +1,7 @@
 BNA_FILE_NAME=$1
 
+mkdir $PWD/bna-src
+
 docker run \
 --rm \
 -v /var/run/docker.sock:/var/run/docker.sock \
@@ -14,6 +16,6 @@ docker run \
 --env FABRIC_VERSION=hlfv1 \
 --env BNA_FILE_NAME=$BNA_FILE_NAME \
 --name networkStarter \
--v composer_bna:/hyperledger/composer/output/ \
+-v "$PWD/bna-src:/hyperledger/composer/output/" \
 -v "$PWD/composer-bna/:/sample-src/composer-bna/" \
 network-starter build_bna

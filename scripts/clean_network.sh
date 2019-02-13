@@ -9,7 +9,6 @@ docker ps -a | grep composer-playground | awk -F ' ' '{print $1}' | xargs docker
 bash "$DIR/clean_crypto.sh"
 
 docker volume rm \
-    composer_bna \
     composer_cred || /bin/true || /usr/bin/true
 
 # Clear all docker networks
