@@ -20,5 +20,5 @@ docker run \
 -v Scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ \
 -v Channel:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts \
 -v composer_cred:/opt/cred \
--v composer_bna:/hyperledger/composer/output/ \
+-v "$PWD/bna-src:/hyperledger/composer/output/" \
 network-starter upgrade_bna
