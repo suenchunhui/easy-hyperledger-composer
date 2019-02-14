@@ -70,9 +70,23 @@ echo "exit 0" >> /etc/rc.local
 SCRIPT
 
 
-Vagrant.configure('2') do |config|
+Vagrant.configure("2") do |config|
+  required_plugins = %w( vagrant-vbguest vagrant-disksize )
+  _retry = false
+  required_plugins.each do |plugin|
+      unless Vagrant.has_plugin? plugin
+          system "vagrant plugin install #{plugin}"
+          _retry=true
+      end
+  end
+
+  if (_retry)
+      exec "vagrant " + ARGV.join(' ')
+  end
+
   config.vm.box = "ubuntu/xenial64"
   config.vm.box_version = "20190101.0.0"
+  config.disksize.size = "20GB"
   config.vm.provider "virtualbox" do |v|
     v.memory = 4096
     v.cpus = 2
